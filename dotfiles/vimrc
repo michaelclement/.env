@@ -28,11 +28,11 @@ inoremap jk <ESC>
 
 " SYNTAX HIGHLIGHTING
 syntax enable
-autocmd! bufreadpost *.md set syntax=off
 let python_hightlight_all = 1
 
-" TABS TO SPACES
+" WHITESPACE MANAGEMENT
 set ts=4
+set sw=4
 set expandtab
 
 " LINE NUMBERS
@@ -48,6 +48,16 @@ set cursorline
 
 " Set column limit to 80
 set colorcolumn=80
+
+" ########## FILE SPECIFIC SETTINGS ##########
+" Set .md files to mean markdown filetype
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+" Set file specific settings for whitespace management
+autocmd Filetype python setlocal ts=4 sw=4 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 expandtab
+autocmd Filetype md setlocal ts=2 sw=2 expandtab
+autocmd Filetype markdown setlocal ts=2 sw=2 expandtab
 
 " ########## LEARN VIMSCRIPT THE HARD WAY EXERCISES ##########
 " Maps - to delete a line and paste it below the current line
