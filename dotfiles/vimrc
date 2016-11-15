@@ -2,9 +2,10 @@
 " Brandon Randle
 " github.com/brandonrandle/.env
 
-" Clear compatibility settings
+" COMPATIBILITY SETTINGS
 set nocompatible
 set noshowmode
+
 
 " ################################ PATHOGEN ################################
 execute pathogen#infect()
@@ -22,6 +23,7 @@ set laststatus=2
 " Remap space to toggle folds
 nnoremap <space> za
 
+
 " ############################# BASIC SETTINGS #############################
 
 " ENCODING
@@ -35,9 +37,8 @@ set backspace=indent,eol,start
 
 " SYNTAX HIGHLIGHTING
 syntax enable
-let python_hightlight_all = 1
 
-" WHITESPACE MANAGEMENT
+" DEFAULT WHITESPACE MANAGEMENT
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -53,14 +54,12 @@ set showmatch
 " VISUAL LINE FOR CURSOR
 set cursorline
 
-" Set column limit to 80
+" SET WINDOW LIMIT
 set colorcolumn=79
 set textwidth=79
 
 
 " ######################### FILE SPECIFIC SETTINGS #########################
-" Set .md files to mean markdown filetype
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " PYTHON Settings
 autocmd BufNewFile,BufRead *.py
@@ -69,13 +68,19 @@ autocmd BufNewFile,BufRead *.py
     \set shiftwidth=4
     \set autoindent
     \set fileformat=unix
+    \let python_hightlight_all = 1
 
-" Set file specific settings for whitespace management
-autocmd Filetype html setlocal ts=2 sw=2
+" MARKDOWN Settings
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype markdown setlocal ts=2 sw=2
+
+" HTML Settings
+autocmd Filetype html setlocal ts=2 sw=2
+
 
 " ################# LEARN VIMSCRIPT THE HARD WAY EXERCISES #################
 " Maps - to delete a line and paste it below the current line
 map - ddp
+
 
 " ################### TEMP SETTINGS FOR EXPERIMENTATION ####################
