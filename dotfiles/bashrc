@@ -1,0 +1,21 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# PROMPT
+force_color_prompt=yes
+PS1='\[\e[32m\]\$: \[\e[37m\]'
+
+# SET DEFAULT EDITOR
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# SET PATH
+export PATH=${PATH}:${HOME}/Library/Python/3.5/bin
+export PATH=${PATH}:${HOME}/bin
+
+# ALIASES
+alias ls='ls -G '

@@ -1,0 +1,7 @@
+[user]
+	email = brandonkrandle@gmail.com
+	name = Brandon Randle
+[core]
+	editor = vim
+[push]
+	default = simple

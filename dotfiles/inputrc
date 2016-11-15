@@ -1,0 +1,15 @@
+#
+# ~/.inputrc
+#
+
+set editing-mode vi
+
+$if mode=vi
+    #NORMAL MODE
+    set keymap vi-command
+    Control-l: clear-screen
+    #INSERT MODE
+    set keymap vi-insert
+    "jk": vi-movement-mode
+    Control-l: clear-screen
+$endif
