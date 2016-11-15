@@ -6,7 +6,7 @@
 set nocompatible
 set noshowmode
 
-" ########## PATHOGEN ##########
+" ################################ PATHOGEN ################################
 execute pathogen#infect()
 filetype plugin indent on
 
@@ -18,13 +18,20 @@ set background=dark
 " VIM-AIRLINE
 set laststatus=2
 
-" ########## BASIC SETTINGS ##########
+" SIMPYLFOLD
+" Remap space to toggle folds
+nnoremap <space> za
+
+" ############################# BASIC SETTINGS #############################
 
 " ENCODING
 set encoding=utf-8
 
 " KEY MAPPINGS
 inoremap jk <ESC>
+
+" GIVE BACKSPACE SOME POWER
+set backspace=indent,eol,start
 
 " SYNTAX HIGHLIGHTING
 syntax enable
@@ -50,7 +57,8 @@ set cursorline
 set colorcolumn=79
 set textwidth=79
 
-" ########## FILE SPECIFIC SETTINGS ##########
+
+" ######################### FILE SPECIFIC SETTINGS #########################
 " Set .md files to mean markdown filetype
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
@@ -63,17 +71,11 @@ autocmd BufNewFile,BufRead *.py
     \set fileformat=unix
 
 " Set file specific settings for whitespace management
-autocmd Filetype html setlocal ts=2 sw=2 
-autocmd Filetype markdown setlocal ts=2 sw=2 
+autocmd Filetype html setlocal ts=2 sw=2
+autocmd Filetype markdown setlocal ts=2 sw=2
 
-" ########## LEARN VIMSCRIPT THE HARD WAY EXERCISES ##########
+" ################# LEARN VIMSCRIPT THE HARD WAY EXERCISES #################
 " Maps - to delete a line and paste it below the current line
 map - ddp
 
-" ########## TEMP SETTINGS FOR EXPERIMENTATION ##########
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
-
-
-
+" ################### TEMP SETTINGS FOR EXPERIMENTATION ####################
