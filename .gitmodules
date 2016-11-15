@@ -1,3 +1,6 @@
 [submodule "dotfiles/vim/bundle/SimpylFold"]
 	path = dotfiles/vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "dotfiles/vim/bundle/gruvbox"]
+	path = dotfiles/vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
