@@ -31,8 +31,8 @@ syntax enable
 let python_hightlight_all = 1
 
 " WHITESPACE MANAGEMENT
-set ts=4
-set sw=4
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 " LINE NUMBERS
@@ -47,18 +47,33 @@ set showmatch
 set cursorline
 
 " Set column limit to 80
-set colorcolumn=80
+set colorcolumn=79
+set textwidth=79
 
 " ########## FILE SPECIFIC SETTINGS ##########
 " Set .md files to mean markdown filetype
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+" PYTHON Settings
+autocmd BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set autoindent
+    \set fileformat=unix
+
 " Set file specific settings for whitespace management
-autocmd Filetype python setlocal ts=4 sw=4 expandtab
-autocmd Filetype html setlocal ts=2 sw=2 expandtab
-autocmd Filetype md setlocal ts=2 sw=2 expandtab
-autocmd Filetype markdown setlocal ts=2 sw=2 expandtab
+autocmd Filetype html setlocal ts=2 sw=2 
+autocmd Filetype markdown setlocal ts=2 sw=2 
 
 " ########## LEARN VIMSCRIPT THE HARD WAY EXERCISES ##########
 " Maps - to delete a line and paste it below the current line
 map - ddp
+
+" ########## TEMP SETTINGS FOR EXPERIMENTATION ##########
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+
+
