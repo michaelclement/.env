@@ -7,3 +7,6 @@
 [submodule "dotfiles/vim/bundle/vim-airline"]
 	path = dotfiles/vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "dotfiles/vim/bundle/vim-lastplace"]
+	path = dotfiles/vim/bundle/vim-lastplace
+	url = https://github.com/dietsche/vim-lastplace.git
