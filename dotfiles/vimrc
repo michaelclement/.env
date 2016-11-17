@@ -60,6 +60,9 @@ set cursorline
 set colorcolumn=79
 set textwidth=79
 
+" REMOVE ALL TRAILING WHITESPACE WITH F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:w<Bar><CR>
+
 
 " ######################### FILE SPECIFIC SETTINGS #########################
 
