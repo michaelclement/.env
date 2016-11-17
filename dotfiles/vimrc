@@ -25,6 +25,8 @@ nnoremap <space> za
 " Set folds to be open by default
 set foldlevel=99
 
+" VIM-LASTPLACE
+
 
 " ############################# BASIC SETTINGS #############################
 
