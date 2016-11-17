@@ -22,6 +22,8 @@ set laststatus=2
 " SIMPYLFOLD
 " Remap space to toggle folds
 nnoremap <space> za
+" Set folds to be open by default
+set foldlevel=99
 
 
 " ############################# BASIC SETTINGS #############################
@@ -75,7 +77,14 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 autocmd Filetype markdown setlocal ts=2 sw=2
 
 " HTML Settings
-autocmd Filetype html setlocal ts=2 sw=2
+"autocmd BufNewFile,BufFilePre,BufRead *.html
+autocmd Filetype html
+    \set tabstop=2
+    \set softtabstop=2
+    \set shiftwidth=2
+    \set autoindent
+    \set expandtab
+" autocmd Filetype html setlocal ts=2 sw=2
 
 
 " ################# LEARN VIMSCRIPT THE HARD WAY EXERCISES #################
