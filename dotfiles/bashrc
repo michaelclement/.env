@@ -23,4 +23,5 @@ export PATH=${PATH}:${HOME}/Library/Python/3.5/bin
 export PATH=${PATH}:${HOME}/bin
 
 # ALIASES
-alias ls='ls -G'
+#alias ls='ls -G'
+alias ls='ls --color'
