@@ -13,7 +13,7 @@
 # SCREEN SETTINGS
 # ------------------------------------------------------------------------------
 
-shell /etc/bash
+shell -$SHELL
 altscreen on
 startup_message off
 #nethack on
