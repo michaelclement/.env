@@ -92,6 +92,20 @@ defnonblock 5
 # STARTUP SCREENS
 # ------------------------------------------------------------------------------
 
+screen -t bash
+split -v 
+focus right
+screen -t bash
+split -v
+focus right
+screen -t bash
+split -v
+focus right
+screen -t bash
+focus left
+focus left
+focus left
+
 # Example of automatically running some programs in windows on screen startup.
 #
 #   The following will open top in the first window, an ssh session to monkey
