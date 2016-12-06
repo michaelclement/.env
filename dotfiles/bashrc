@@ -2,6 +2,15 @@
 # ~/.bashrc
 #
 
+# PLATFORM DETERMINATION
+PLATFORM='unknown'
+UNAMESTR=`uname`
+if [[ "$UNAMESTR" == 'Linux' ]]; then
+    PLATFORM='linux'
+elif [[ "$UNAMESTR" == 'Darwin' ]]; then
+    PLATFORM='mac'
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -23,5 +32,8 @@ export PATH=${PATH}:${HOME}/Library/Python/3.5/bin
 export PATH=${PATH}:${HOME}/bin
 
 # ALIASES
-#alias ls='ls -G'
-alias ls='ls --color'
+if [[ $PLATFORM == 'linux' ]]; then
+    alias ls='ls --color=auto'
+elif [[ $PLATFORM == 'mac' ]]; then
+    alias ls='ls -G'
+fi
