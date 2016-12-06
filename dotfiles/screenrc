@@ -92,11 +92,10 @@ defnonblock 5
 # STARTUP SCREENS
 # ------------------------------------------------------------------------------
 
-screen -t bash
+screen bash
 split -v
 focus right
-screen -t bash
-split -v
+screen bash
 focus left
 
 # Example of automatically running some programs in windows on screen startup.
