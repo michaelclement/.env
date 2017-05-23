@@ -33,9 +33,9 @@ export PATH=${PATH}:${HOME}/bin
 
 # ALIASES
 if [[ $PLATFORM == 'linux' ]]; then
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto -x'
 elif [[ $PLATFORM == 'mac' ]]; then
-    alias ls='ls -G'
+    alias ls='ls -G -x'
 fi
 
 # SPECIFICALLY FOR KALI

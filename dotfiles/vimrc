@@ -65,11 +65,22 @@ set textwidth=79
 " REMOVE ALL TRAILING WHITESPACE WITH F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:w<Bar><CR>
 
+" SET NETRW DEFAULTS
+ let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 25
+" augroup ProjectDrawer
+"  autocmd!
+"   autocmd VimEnter * :Vexplore
+" augroup END
+
 
 " ######################### FILE SPECIFIC SETTINGS #########################
 
 " PYTHON Settings
-autocmd BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py
     \set tabstop=4
     \set softtabstop=4
     \set shiftwidth=4
@@ -79,11 +90,11 @@ autocmd BufNewFile,BufRead *.py
 
 " MARKDOWN Settings
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-autocmd Filetype markdown setlocal ts=2 sw=2
+au Filetype markdown setlocal ts=2 sw=2
 
 " HTML Settings
 "autocmd BufNewFile,BufFilePre,BufRead *.html
-autocmd Filetype html
+au Filetype html
     \set tabstop=2
     \set softtabstop=2
     \set shiftwidth=2
@@ -91,10 +102,16 @@ autocmd Filetype html
     \set expandtab
 " autocmd Filetype html setlocal ts=2 sw=2
 
+" TWIG Settings
+" .twig files use html syntax
+au BufNewFile,BufRead *.twig setlocal filetype=html
+
+" YAML Settings
+au BufNewFile,BufRead *.yml setlocal filetype=yaml
+au Filetype yaml setlocal ts=2 expandtab sw=2 softtabstop=2
+
 
 " ################# LEARN VIMSCRIPT THE HARD WAY EXERCISES #################
-" Maps - to delete a line and paste it below the current line
-map - ddp
 
 
 " ################### TEMP SETTINGS FOR EXPERIMENTATION ####################
