@@ -21,3 +21,7 @@ ln -s ~/.env/dotfiles/vim ~/.vim
 cd ~/.env/dotfiles/vim
 git submodule init
 git submodule update
+
+cd ~/.env
+git submodule init
+git submodule update
