@@ -13,3 +13,6 @@
 [submodule "dotfiles/vim/bundle/nerdtree"]
 	path = dotfiles/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotfiles/vim/bundle/vim-beancount"]
+	path = dotfiles/vim/bundle/vim-beancount
+	url = https://github.com/nathangrigg/vim-beancount.git
