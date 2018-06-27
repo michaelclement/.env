@@ -16,3 +16,6 @@
 [submodule "dotfiles/vim/bundle/vim-beancount"]
 	path = dotfiles/vim/bundle/vim-beancount
 	url = https://github.com/nathangrigg/vim-beancount.git
+[submodule "gruvbox-contrib"]
+	path = gruvbox-contrib
+	url = https://github.com/morhetz/gruvbox-contrib.git

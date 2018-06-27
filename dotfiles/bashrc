@@ -37,8 +37,3 @@ if [[ $PLATFORM == 'linux' ]]; then
 elif [[ $PLATFORM == 'mac' ]]; then
     alias ls='ls -G -x'
 fi
-
-# SPECIFICALLY FOR KALI
-if [[ $PLATFORM == 'Linux' ]]; then
-    xrdb ~/.Xresources
-fi
