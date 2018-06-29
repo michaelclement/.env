@@ -14,11 +14,6 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# If using x, start xterm
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    exec startx -- -nocursor
-fi
-
 # PROMPT
 force_color_prompt=yes
 PS1='\[\e[32m\]\$: \[\e[37m\]'
