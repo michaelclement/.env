@@ -13,9 +13,15 @@
 [submodule "dotfiles/vim/bundle/nerdtree"]
 	path = dotfiles/vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotfiles/vim/bundle/vim-beancount"]
+	path = dotfiles/vim/bundle/vim-beancount
+	url = https://github.com/nathangrigg/vim-beancount.git
 [submodule "gruvbox-contrib"]
 	path = gruvbox-contrib
 	url = https://github.com/morhetz/gruvbox-contrib.git
 [submodule "dotfiles/vim/bundle/vim-gitgutter"]
 	path = dotfiles/vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "dotfiles/vim/bundle/typescript-vim"]
+	path = dotfiles/vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
