@@ -27,6 +27,9 @@ set foldlevel=99
 
 " VIM-LASTPLACE
 
+" VIM-GUTTER
+" Adjusts updatetime to allow diff markers to appear quickly.
+set updatetime=100
 
 " ############################# BASIC SETTINGS #############################
 

@@ -16,3 +16,6 @@
 [submodule "gruvbox-contrib"]
 	path = gruvbox-contrib
 	url = https://github.com/morhetz/gruvbox-contrib.git
+[submodule "dotfiles/vim/bundle/vim-gitgutter"]
+	path = dotfiles/vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
