@@ -18,10 +18,7 @@ ln -s ~/.env/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/.env/dotfiles/inputrc ~/.inputrc
 ln -s ~/.env/dotfiles/vim ~/.vim
 
-cd ~/.env/dotfiles/vim
-git submodule init
-git submodule update
-
+# INITIALIZE SUBMODULES (mostly vim plugins)
 cd ~/.env
 git submodule init
 git submodule update
