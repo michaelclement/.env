@@ -22,7 +22,7 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'airblade/vim-gitgutter' "
 
 " opens files in last position edited
-Plug 'farmergreg/vim-lastplace'
+" Plug 'farmergreg/vim-lastplace'
 
 " provides full path fuzzy file searching for vim
 Plug 'ctrlpvim/ctrlp.vim'
