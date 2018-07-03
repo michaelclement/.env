@@ -6,9 +6,18 @@
 set nocompatible
 set noshowmode
 
-" ################################ PATHOGEN ################################
-execute pathogen#infect()
-filetype plugin indent on
+" ################################ PLUGINS ################################
+
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'tmhedberg/SimpylFold'
+Plug 'leafgarland/typescript-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'nathangrigg/vim-beancount'
+Plug 'airblade/vim-gitgutter'
+Plug 'farmergreg/vim-lastplace'
+Plug 'mhinz/vim-startify'
+call plug#end()
 
 " GRUVBOX
 set t_Co=256
