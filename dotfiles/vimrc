@@ -1,113 +1,247 @@
-" MY SETUP
 " Brandon Randle
-" github.com/brandonrandle/.env
 
-" COMPATIBILITY SETTINGS
-set nocompatible
-set noshowmode
+" plugins
+" load plugins {{{
 
-" ################################ PLUGINS ################################
-
+" using vim-plug for management
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
-Plug 'tmhedberg/SimpylFold'
-Plug 'leafgarland/typescript-vim'
-Plug 'vim-airline/vim-airline'
-Plug 'nathangrigg/vim-beancount'
-Plug 'airblade/vim-gitgutter'
-Plug 'farmergreg/vim-lastplace'
-Plug 'mhinz/vim-startify'
-call plug#end()
 
-" GRUVBOX
+" color scheme for vim
+Plug 'morhetz/gruvbox'
+
+" python code folding
+Plug 'tmhedberg/SimpylFold'
+
+" typescript syntax highlighting
+Plug 'leafgarland/typescript-vim'
+
+" beancount syntax highlighting and misc commands
+Plug 'nathangrigg/vim-beancount'
+
+" git add/delete/modify markers in left gutter
+Plug 'airblade/vim-gitgutter' "
+
+" opens files in last position edited
+Plug 'farmergreg/vim-lastplace'
+
+" provides full path fuzzy file searching for vim
+Plug 'ctrlpvim/ctrlp.vim'
+
+" vim status bar
+Plug 'vim-airline/vim-airline'
+
+" vim startup screen
+Plug 'mhinz/vim-startify'
+
+call plug#end()
+" }}}
+
+" plugin configuration
+" ctrlp {{{
+
+" order matching files top to bottom
+let g:ctrlp_match_window = 'bottom,order:ttb'
+
+" always open files in new buffers
+let g:ctrlp_switch_buffer = 0
+
+" allow change of working directory
+let g:ctrlp_working_path_mode = 0
+
+" uses ag for the actual searching (see The Silver Searcher)
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
+" }}}
+" vim-gutter {{{
+
+" adjusts updatetime to allow diff markers to appear quickly
+set updatetime=100
+
+" }}}
+" vim-airline {{{
+
+" required by vim-airline to work properly
+set laststatus=2
+
+" }}}
+" startify {{{
+
+" sets directory to save/load sessions to/from
+let g:startify_session_dir ='~/.vim/session'
+
+" sets bookmarks
+let g:startify_bookmarks = ['~/.vimrc']
+
+" }}}
+
+" settings
+" colors {{{
+
+" using gruvbox color scheme
 set t_Co=256
 colorscheme gruvbox
 set background=dark
 
-" VIM-AIRLINE
-set laststatus=2
-
-" SIMPYLFOLD
-" Remap space to toggle folds
-nnoremap <space> za
-" Set folds to be open by default
-set foldlevel=99
-
-" VIM-LASTPLACE
-" No settings needed.
-
-" VIM-GUTTER
-" Adjusts updatetime to allow diff markers to appear quickly.
-set updatetime=100
-
-" ############################# BASIC SETTINGS #############################
-
-" ENCODING
-set encoding=utf-8
-
-" KEY MAPPINGS
-" Makes escaping from modes easier.
-inoremap jk <ESC>
-
-" GIVE BACKSPACE SOME POWER
-set backspace=indent,eol,start
-
-" SYNTAX HIGHLIGHTING
+" enable syntax processing
 syntax enable
 
-" DEFAULT WHITESPACE MANAGEMENT
+" }}}
+" spaces & tabs {{{
+
+" number of visual spaces per TAB
 set tabstop=4
+
+" number of spaces a TAB counts for when editing (inserted/removed)
+set softtabstop=4
+
+"  used for indentation shifting
 set shiftwidth=4
+
+" converts TABs into spaces
 set expandtab
 
-" LINE NUMBERS
+" }}}
+" ui layout {{{
+
+" shows line numbers
 set number
+
+" sets column width for numbers
 set numberwidth=4
+
+" enables line numbers relative to current cursor position
 set relativenumber
 
-" MATCHING PAREN/BRACES/BRACKETS
-set showmatch
-
-" VISUAL LINE FOR CURSOR
+" highlights the current line
 set cursorline
 
-" SET WINDOW LIMIT
+" load filetype-specific indent files
+filetype indent on
+
+" visual autocomplete for command menu
+set wildmenu
+
+" redraws screen only when necessary
+set lazyredraw
+
+" hightlights matching [{()}]
+set showmatch
+
+" sets window limits
 set colorcolumn=79
 set textwidth=79
 
-" REMOVE ALL TRAILING WHITESPACE WITH F5
+" }}}
+" searching {{{
+
+" search as characters are entered
+set incsearch
+
+" highlight matches
+set hlsearch
+
+" turn off search highlight with \<space>
+nnoremap <leader><space> :nohlsearch<CR>
+
+" }}}
+" folding {{{
+
+" enable folding
+set foldenable
+
+" open most folds by default
+set foldlevelstart=10
+
+" 10 nested folds max
+set foldnestmax=10
+
+" base folds on indent level
+set foldmethod=indent
+
+" remap space to toggle folds
+nnoremap <space> za
+
+" }}}
+" key mappings {{{
+
+" use jk for escape
+inoremap jk <ESC>
+
+" gives backspace additional functionality
+set backspace=indent,eol,start
+
+" }}}
+" autogroups {{{
+
+    augroup configgroup
+        autocmd!
+        autocmd VimEnter * highlight clear SignColumn
+        autocmd BufWritePre *.php, *.py, *.js, *.txt, *.hs, *.java, *.md
+            \:call <SID>StripTrailingWhitespaces()
+        autocmd FileType php setlocal expandtab
+        autocmd FileType php setlocal list
+        autocmd FileType php setlocal listchars=tab:+\ ,eol:-
+        autocmd FileType php setlocal formatprg=par\ -w80\ -T4
+        autocmd FileType python setlocal commentstring=#\ %s
+        autocmd BufEnter Makefile setlocal noexpandtab
+        autocmd BufEnter *.sh setlocal tabstop=2
+        autocmd BufEnter *.sh setlocal shiftwidth=2
+        autocmd BufEnter *.sh setlocal softtabstop=2
+        autocmd BufEnter *.html setlocal tabstop=2
+        autocmd BufEnter *.html setlocal shiftwidth=2
+        autocmd BufEnter *.html setlocal softtabstop=2
+        autocmd BufEnter *.md setlocal tabstop=2
+        autocmd BufEnter *.md setlocal shiftwidth=2
+        autocmd BufEnter *.md setlocal softtabstop=2
+        autocmd BufEnter *.yml setlocal tabstop=2
+        autocmd BufEnter *.yml setlocal shiftwidth=2
+        autocmd BufEnter *.yml setlocal softtabstop=2
+        autocmd BufEnter *.twig setlocal tabstop=2
+        autocmd BufEnter *.twig setlocal shiftwidth=2
+        autocmd BufEnter *.twig setlocal softtabstop=2
+    augroup END
+
+" }}}
+" backups {{{
+
+" moves all backups to tmp folders
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+" }}}
+" custom functions {{{
+
+" removes all trailing whitespace in file with F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:w<Bar><CR>
 
+" strips trailing whitespace at the end of files
+" this function is called on buffer write in the autogroup above
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
 
-" ######################### FILE SPECIFIC SETTINGS #########################
+" }}}
+" misc {{{
 
-" PYTHON Settings
-au BufNewFile,BufRead *.py
-    \set tabstop=4
-    \set softtabstop=4
-    \set shiftwidth=4
-    \set autoindent
-    \set fileformat=unix
-    \let python_hightlight_all = 1
+" compatibility settings
+set nocompatible
+set noshowmode
 
-" MARKDOWN Settings
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au Filetype markdown setlocal ts=2 sw=2
+" encoding
+set encoding=utf-8
 
-" HTML Settings
-"autocmd BufNewFile,BufFilePre,BufRead *.html
-au Filetype html
-    \set tabstop=2
-    \set softtabstop=2
-    \set shiftwidth=2
-    \set autoindent
-    \set expandtab
-" autocmd Filetype html setlocal ts=2 sw=2
+" set custom command for this file
+set modelines=2
 
-" TWIG Settings
-" .twig files use html syntax
-au BufNewFile,BufRead *.twig setlocal filetype=html
-
-" YAML Settings
-au BufNewFile,BufRead *.yml setlocal filetype=yaml
-au Filetype yaml setlocal ts=2 expandtab sw=2 softtabstop=2
+" ensures the vimrc uses fold markers and is folded by default
+" vim:foldmethod=marker:foldlevel=0
+" }}}
