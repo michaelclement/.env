@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+source ~/.env/git-completion.bash
+
 # PLATFORM DETERMINATION
 PLATFORM='unknown'
 UNAMESTR=`uname`
