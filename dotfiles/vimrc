@@ -36,8 +36,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 " automatic table creating and formatting
 Plug 'dhruvasagar/vim-table-mode'
 
-" autocomplete
-" to-be-added
+" git wrapper
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 " }}}
