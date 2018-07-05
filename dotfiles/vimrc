@@ -21,9 +21,6 @@ Plug 'nathangrigg/vim-beancount'
 " git add/delete/modify markers in left gutter
 Plug 'airblade/vim-gitgutter' "
 
-" opens files in last position edited
-" Plug 'farmergreg/vim-lastplace'
-
 " provides full path fuzzy file searching for vim
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -32,6 +29,15 @@ Plug 'vim-airline/vim-airline'
 
 " vim startup screen
 Plug 'mhinz/vim-startify'
+
+" visually displays indent levels
+Plug 'nathanaelkane/vim-indent-guides'
+
+" automatic table creating and formatting
+Plug 'dhruvasagar/vim-table-mode'
+
+" autocomplete
+" to-be-added
 
 call plug#end()
 " }}}
@@ -71,6 +77,18 @@ let g:startify_session_dir ='~/.vim/session'
 
 " sets bookmarks
 let g:startify_bookmarks = ['~/.vimrc']
+
+" }}}
+" vim-indent-guides {{{
+
+" enables indent guides on startup
+let g:indent_guides_enable_on_vim_startup = 1
+
+" sets guides to one character wide
+let g:indent_guides_guide_size = 1
+
+" makes indent guide highlights more subtle
+let g:indent_guides_color_change_percent = 3
 
 " }}}
 
