@@ -39,6 +39,9 @@ Plug 'dhruvasagar/vim-table-mode'
 " git wrapper
 Plug 'tpope/vim-fugitive'
 
+" vim commentary for easy commenting of code
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 " }}}
 
