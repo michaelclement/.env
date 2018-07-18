@@ -42,6 +42,12 @@ Plug 'tpope/vim-fugitive'
 " vim commentary for easy commenting of code
 Plug 'tpope/vim-commentary'
 
+" Autocomplete
+Plug 'valloric/youcompleteme'
+
+" emmet abbreviation expansion
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 " }}}
 
