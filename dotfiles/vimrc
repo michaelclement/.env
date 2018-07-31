@@ -43,7 +43,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 
 " Autocomplete
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 
 " emmet abbreviation expansion
 Plug 'mattn/emmet-vim'
@@ -158,6 +158,10 @@ set showmatch
 set colorcolumn=79
 set textwidth=79
 
+" opens splits to the right and bottom by default
+set splitbelow
+set splitright
+
 " }}}
 " searching {{{
 
@@ -196,6 +200,12 @@ inoremap jk <ESC>
 
 " gives backspace additional functionality
 set backspace=indent,eol,start
+
+" Remaps split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " }}}
 " autogroups {{{
