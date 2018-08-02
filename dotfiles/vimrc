@@ -52,6 +52,12 @@ call plug#end()
 " }}}
 
 " plugin configuration
+" typescript-vim {{{
+
+" disable plugin custom indenter
+" let g:typescript_indent_disable = 1
+
+" }}}
 " ctrlp {{{
 
 " order matching files top to bottom
@@ -61,7 +67,7 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 
 " allow change of working directory
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 
 " uses ag for the actual searching (see The Silver Searcher)
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
@@ -91,7 +97,7 @@ let g:startify_bookmarks = ['~/.vimrc']
 " vim-indent-guides {{{
 
 " enables indent guides on startup
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 " sets guides to one character wide
 let g:indent_guides_guide_size = 1
@@ -220,6 +226,14 @@ nnoremap <C-H> <C-W><C-H>
         autocmd FileType php setlocal listchars=tab:+\ ,eol:-
         autocmd FileType php setlocal formatprg=par\ -w80\ -T4
         autocmd FileType python setlocal commentstring=#\ %s
+        autocmd FileType typescript setlocal expandtab
+        autocmd FileType typescript setlocal tabstop=2
+        autocmd FileType typescript setlocal shiftwidth=2
+        autocmd FileType typescript setlocal softtabstop=2
+        autocmd FileType javascript setlocal expandtab
+        autocmd FileType javascript setlocal tabstop=2
+        autocmd FileType javascript setlocal shiftwidth=2
+        autocmd FileType javascript setlocal softtabstop=2
         autocmd BufEnter Makefile setlocal noexpandtab
         autocmd BufEnter *.sh setlocal tabstop=2
         autocmd BufEnter *.sh setlocal shiftwidth=2
