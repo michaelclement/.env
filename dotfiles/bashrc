@@ -34,3 +34,9 @@ if [[ $PLATFORM == 'linux' ]]; then
 elif [[ $PLATFORM == 'mac' ]]; then
     alias ls='ls -G -x'
 fi
+
+# pyenv initialization settings
+export WORKON_HOME=~/.ve
+export PROJECT_HOME=~/workspace
+eval "$(pyenv init -)"
+#pyenv virtualenvwrapper_lazy
