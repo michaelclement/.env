@@ -24,7 +24,7 @@ function create_settings() {
   ln -s ~/.env/dotfiles/inputrc ~/.inputrc
   ln -s ~/.env/dotfiles/vim ~/.vim
   mkdir -p ~/.config/tilix
-  ln -s ~/.env/tilix_themes ~/.config/tilix/schemes
+  ln -s ~/.env/themes/tilix_themes ~/.config/tilix/schemes
 }
 # }}}
 # FUNCTION - INITIALIZE SUBMODULES {{{
