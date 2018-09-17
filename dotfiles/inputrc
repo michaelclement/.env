@@ -2,6 +2,8 @@
 # ~/.inputrc
 #
 
+# uses vi keybindings for command line input
+
 set editing-mode vi
 
 $if mode=vi
