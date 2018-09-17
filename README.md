@@ -5,11 +5,7 @@ A repo for my environment settings.
   - Git completion script
   - Gruvbox themes for most terminal emulators
   - Automated, guided setup that can install vim, ag, and tilix.
-  - .bashrc
-  - .bash_profile
-  - .gitconfig
-  - .inputrc
-  - .vimrc
+  - My preferred config files, including .bashrc, .bash_profile, .gitconfig, .inputrc, and .vimrc.
 
 #### Supported Operating System(s):
   - Ubuntu 18.04
