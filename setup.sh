@@ -29,11 +29,11 @@ function create_settings() {
 # }}}
 # FUNCTION - INITIALIZE SUBMODULES {{{
 function init_submodules() {
-  printf "Initializing submodules..."
+  printf "Initializing submodules...\n"
   cd ~/.env
   git submodule init
   git submodule update
-  printf "\n\n"
+  printf "\n"
 }
 # }}}
 # FUNCTION - INSTALL VIM {{{
