@@ -8,6 +8,7 @@ A repo for my environment settings.
   - My preferred config files, including .bashrc, .bash_profile, .gitconfig, .inputrc, and .vimrc.
 
 #### Supported Operating System(s):
+  - Ubuntu 16.04
   - Ubuntu 18.04
 
 #### Instructions
