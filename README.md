@@ -1,6 +1,15 @@
 # env
 A repo for my environment settings.
 
+#### Features
+  - Git completion script
+  - Gruvbox themes for most terminal emulators
+  - .bashrc
+  - .bash_profile
+  - .gitconfig
+  - .inputrc
+  - .vimrc
+
 #### Supported Operating System(s):
   - Ubuntu 18.04
 
