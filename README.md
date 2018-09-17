@@ -1,17 +1,17 @@
 # env
 A repo for my environment settings.
 
-#### Features
+### Features
   - Git completion script
   - Gruvbox themes for most terminal emulators
   - Automated, guided setup that can install vim, ag, and tilix.
   - My preferred config files, including .bashrc, .bash_profile, .gitconfig, .inputrc, and .vimrc.
 
-#### Supported Operating System(s):
+### Supported Operating System(s):
   - Ubuntu 16.04
   - Ubuntu 18.04
 
-#### Instructions
+### Instructions
   - Install curl if not already installed.
   - Install Krypton with `curl https://krypt.co/kr | sh`. Pair with phone using `kr pair`.
   - Install git if not already installed.
