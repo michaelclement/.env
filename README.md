@@ -1,8 +1,8 @@
 # env
 A repo for my environment settings.
 
-Run ./setup.sh to setup environment.
+#### Supported Operating System(s):
+  - Ubuntu 18.04
 
-In vim, run :PlugInstall to install plugins.
-
-Install terminal theme based on OS and terminal program used.
+#### Instructions
+  - Run ./setup.sh to use interactive setup.
