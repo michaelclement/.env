@@ -4,6 +4,7 @@ A repo for my environment settings.
 #### Features
   - Git completion script
   - Gruvbox themes for most terminal emulators
+  - Automated, guided setup that can install vim, ag, and tilix.
   - .bashrc
   - .bash_profile
   - .gitconfig
