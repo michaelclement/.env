@@ -1,6 +1,6 @@
-[submodule "gruvbox-contrib"]
-	path = gruvbox-contrib
-	url = https://github.com/morhetz/gruvbox-contrib.git
 [submodule "tilix_themes"]
 	path = tilix_themes
 	url = https://github.com/MichaelThessel/tilix-gruvbox.git
+[submodule "terminal_themes"]
+	path = terminal_themes
+	url = https://github.com/morhetz/gruvbox-contrib.git
