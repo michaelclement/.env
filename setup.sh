@@ -1,6 +1,31 @@
 #!/usr/bin/env bash
 # A script to setup my environment settings.
 
+# FUNCTION - DETERMINE OPERATING SYSTEM {{{
+function determine_os() {
+  # SHOW AVAILBLE OSES
+  printf "Available Operating Systems:\n"
+  printf "(1) Ubuntu 16.04\n"
+  printf "(2) Ubuntu 18.04\n"
+  printf "\n"
+  read -p 'Please choose an operating system: ' -n1 answer
+  printf "\n"
+
+  # VALIDATE RESPONSE
+  if [[ $answer = '1' ]]; then
+    PLATFORM='Ubuntu 16.04'
+  elif [[ $answer = '2' ]]; then
+    PLATFORM='Ubuntu 18.04'
+  else
+    printf "That is not an option. Try again.\n"
+    exit 0
+  fi
+  printf "\n"
+
+  # CONTINUE
+  printf "Setup proceeding for $PLATFORM.\n\n"
+}
+# }}}
 # FUNCTION - CLEAR PREVIOUS SETTINGS {{{
 function clear_settings() {
   printf "Clearing previous settings...\n\n"
@@ -71,10 +96,17 @@ function install_tilix() {
   read -p 'Would you like to install Tilix? (y/n) ' -n1 answer
   printf "\n\n"
   if [[ $answer = [yY] ]]; then
-    printf "Installing Tilix..."
-    printf "\n"
-    sudo apt-get install -y tilix
-    printf "\n"
+    if [[ $PLATFORM = 'Ubuntu 16.04' ]]; then
+      sudo add-apt-repository -y ppa:webupd8team/terminix
+      sudo apt-get update
+      sudo apt-get install -y tilix
+      printf "\n"
+    elif [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
+      printf "Installing Tilix..."
+      printf "\n"
+      sudo apt-get install -y tilix
+      printf "\n"
+    fi
     printf "###################################################################"
     printf "\n"
     printf "Enable preferred color scheme under Preferences -> Default -> Color"
@@ -92,6 +124,7 @@ function run() {
   printf "\n\n"
   printf "Beginning environment setup."
   printf "\n\n"
+  determine_os
   clear_settings
   create_settings
   init_submodules
