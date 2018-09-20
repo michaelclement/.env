@@ -42,6 +42,9 @@ Plug 'tpope/vim-fugitive'
 " vim commentary for easy commenting of code
 Plug 'tpope/vim-commentary'
 
+" syntax highlighting for twig
+Plug 'nelsyeung/twig.vim'
+
 " Autocomplete
 " Plug 'valloric/youcompleteme'
 
