@@ -10,6 +10,7 @@ A repo for my environment settings.
 ### Supported Operating System(s):
   - Ubuntu 16.04
   - Ubuntu 18.04
+  - MacOS (requires Homebrew)
 
 ### Instructions
   - Install curl if not already installed.
