@@ -7,6 +7,7 @@ function determine_os() {
   printf "Available Operating Systems:\n"
   printf "(1) Ubuntu 16.04\n"
   printf "(2) Ubuntu 18.04\n"
+  printf "(3) MacOS (requires Homebrew)\n"
   printf "\n"
   read -p 'Please choose an operating system: ' -n1 answer
   printf "\n"
@@ -16,6 +17,8 @@ function determine_os() {
     PLATFORM='Ubuntu 16.04'
   elif [[ $answer = '2' ]]; then
     PLATFORM='Ubuntu 18.04'
+  elif [[ $answer = '3' ]]; then
+    PLATFORM='MacOS'
   else
     printf "That is not an option. Try again.\n"
     exit 0
@@ -36,7 +39,11 @@ function clear_settings() {
   rm .gitconfig
   rm .inputrc
   rm .vim
-  rm -rf ~/.config/tilix
+
+  # Tilix is only usable on Ubuntu
+  if [[ $PLATFORM = 'Ubuntu 16.04' ]] || [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
+    rm -rf ~/.config/tilix
+  fi
 }
 # }}}
 # FUNCTION - CREATE NEW SETTINGS {{{
@@ -48,8 +55,12 @@ function create_settings() {
   ln -s ~/.env/dotfiles/gitconfig ~/.gitconfig
   ln -s ~/.env/dotfiles/inputrc ~/.inputrc
   ln -s ~/.env/dotfiles/vim ~/.vim
-  mkdir -p ~/.config/tilix
-  ln -s ~/.env/themes/tilix_themes ~/.config/tilix/schemes
+
+  # Tilix is only usable on Ubuntu
+  if [[ $PLATFORM = 'Ubuntu 16.04' ]] || [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
+    mkdir -p ~/.config/tilix
+    ln -s ~/.env/themes/tilix_themes ~/.config/tilix/schemes
+  fi
 }
 # }}}
 # FUNCTION - INITIALIZE SUBMODULES {{{
@@ -66,10 +77,17 @@ function install_vim() {
   read -p 'Would you like to install Vim? (y/n) ' -n1 answer
   printf "\n\n"
   if [[ $answer = [yY] ]]; then
-    printf "Installing Vim..."
-    printf "\n"
-    sudo apt-get install -y vim
-    printf "\n"
+    if [[ $PLATFORM = 'MacOS' ]]; then
+      printf "Installing Vim..."
+      printf "\n"
+      brew install vim
+      printf "\n"
+    else
+      printf "Installing Vim..."
+      printf "\n"
+      sudo apt-get install -y vim
+      printf "\n"
+    fi
     printf "Initializing vim plugins..."
     printf "\n\n"
     vim +PlugUpgrade +PlugUpdate +qall
@@ -84,35 +102,44 @@ function install_ag() {
   read -p 'Would you like to install ag? (y/n) ' -n1 answer
   printf "\n\n"
   if [[ $answer = [yY] ]]; then
-    printf "Installing ag..."
-    printf "\n"
-    sudo apt-get install -y silversearcher-ag
-    printf "\n"
+    if [[ $PLATFORM = 'MacOS' ]]; then
+      printf "Installing ag..."
+      printf "\n"
+      brew install the_silver_searcher
+      printf "\n"
+    else
+      printf "Installing ag..."
+      printf "\n"
+      sudo apt-get install -y silversearcher-ag
+      printf "\n"
+    fi
   fi
 }
 # }}}
 # FUNCTION - INSTALL TILIX {{{
 function install_tilix() {
-  read -p 'Would you like to install Tilix? (y/n) ' -n1 answer
-  printf "\n\n"
-  if [[ $answer = [yY] ]]; then
-    if [[ $PLATFORM = 'Ubuntu 16.04' ]]; then
-      sudo add-apt-repository -y ppa:webupd8team/terminix
-      sudo apt-get update
-      sudo apt-get install -y tilix
-      printf "\n"
-    elif [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
-      printf "Installing Tilix..."
-      printf "\n"
-      sudo apt-get install -y tilix
-      printf "\n"
-    fi
-    printf "###################################################################"
-    printf "\n"
-    printf "Enable preferred color scheme under Preferences -> Default -> Color"
-    printf "\n"
-    printf "###################################################################"
+  if [[ $PLATFORM = 'Ubuntu 16.04' ]] || [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
+    read -p 'Would you like to install Tilix? (y/n) ' -n1 answer
     printf "\n\n"
+    if [[ $answer = [yY] ]]; then
+      if [[ $PLATFORM = 'Ubuntu 16.04' ]]; then
+        sudo add-apt-repository -y ppa:webupd8team/terminix
+        sudo apt-get update
+        sudo apt-get install -y tilix
+        printf "\n"
+      elif [[ $PLATFORM = 'Ubuntu 18.04' ]]; then
+        printf "Installing Tilix..."
+        printf "\n"
+        sudo apt-get install -y tilix
+        printf "\n"
+      fi
+      printf "###################################################################"
+      printf "\n"
+      printf "Enable preferred color scheme under Preferences -> Default -> Color"
+      printf "\n"
+      printf "###################################################################"
+      printf "\n\n"
+    fi
   fi
 }
 # }}}
