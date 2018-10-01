@@ -119,6 +119,21 @@ set background=dark
 syntax enable
 
 " }}}
+" netrw {{{
+
+" settings for netrw buffer
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
+" use tree view by default
+let g:netrw_liststyle = 3
+
+" hide banner by default
+let g:netrw_banner = 0
+
+" set width of netrw
+let g:netrw_winsize = 25
+
+" }}}
 " spaces & tabs {{{
 
 " number of visual spaces per TAB
