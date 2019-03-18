@@ -87,6 +87,9 @@ set updatetime=100
 " required by vim-airline to work properly
 set laststatus=2
 
+" shows buffers as tabs at top of screen
+let g:airline#extensions#tabline#enabled = 1
+
 " }}}
 " startify {{{
 
