@@ -9,17 +9,20 @@ call plug#begin('~/.vim/plugged')
 " color scheme for vim
 Plug 'morhetz/gruvbox'
 
-" python code folding
-Plug 'tmhedberg/SimpylFold'
-
 " typescript syntax highlighting
 Plug 'leafgarland/typescript-vim'
+
+" javascript syntax highlighting
+Plug 'pangloss/vim-javascript'
 
 " beancount syntax highlighting and misc commands
 Plug 'nathangrigg/vim-beancount'
 
 " git add/delete/modify markers in left gutter
 Plug 'airblade/vim-gitgutter' "
+
+" python code folding
+Plug 'tmhedberg/SimpylFold'
 
 " provides full path fuzzy file searching for vim
 Plug 'ctrlpvim/ctrlp.vim'
@@ -30,37 +33,16 @@ Plug 'vim-airline/vim-airline'
 " vim startup screen
 Plug 'mhinz/vim-startify'
 
-" visually displays indent levels
-Plug 'nathanaelkane/vim-indent-guides'
-
-" automatic table creating and formatting
-Plug 'dhruvasagar/vim-table-mode'
-
 " git wrapper
 Plug 'tpope/vim-fugitive'
 
 " vim commentary for easy commenting of code
 Plug 'tpope/vim-commentary'
 
-" syntax highlighting for twig
-Plug 'nelsyeung/twig.vim'
-
-" Autocomplete
-" Plug 'valloric/youcompleteme'
-
-" emmet abbreviation expansion
-Plug 'mattn/emmet-vim'
-
 call plug#end()
 " }}}
 
 " plugin configuration
-" typescript-vim {{{
-
-" disable plugin custom indenter
-" let g:typescript_indent_disable = 1
-
-" }}}
 " ctrlp {{{
 
 " order matching files top to bottom
@@ -100,20 +82,14 @@ let g:startify_session_dir ='~/.vim/session'
 let g:startify_bookmarks = ['~/.vimrc']
 
 " }}}
-" vim-indent-guides {{{
-
-" enables indent guides on startup
-let g:indent_guides_enable_on_vim_startup = 0
-
-" sets guides to one character wide
-let g:indent_guides_guide_size = 1
-
-" makes indent guide highlights more subtle
-let g:indent_guides_color_change_percent = 3
-
-" }}}
 
 " settings
+" comments {{{
+
+" disables automatic comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" }}}
 " colors {{{
 
 " using gruvbox color scheme
@@ -121,7 +97,7 @@ set t_Co=256
 colorscheme gruvbox
 set background=dark
 
-" enable syntax processing
+" enable syntax processing/highlighting
 syntax enable
 
 " }}}
@@ -138,6 +114,9 @@ let g:netrw_banner = 0
 
 " set width of netrw
 let g:netrw_winsize = 25
+
+" open files in a new vertical split
+let g:netrw_browse_split = 2
 
 " }}}
 " spaces & tabs {{{
@@ -237,41 +216,42 @@ nnoremap <C-H> <C-W><C-H>
 " }}}
 " autogroups {{{
 
-    augroup configgroup
-        autocmd!
-        autocmd VimEnter * highlight clear SignColumn
-        autocmd BufWritePre *.php, *.py, *.js, *.txt, *.hs, *.java, *.md
-            \:call <SID>StripTrailingWhitespaces()
-        autocmd FileType php setlocal expandtab
-        autocmd FileType php setlocal list
-        autocmd FileType php setlocal listchars=tab:+\ ,eol:-
-        autocmd FileType php setlocal formatprg=par\ -w80\ -T4
-        autocmd FileType python setlocal commentstring=#\ %s
-        autocmd FileType typescript setlocal expandtab
-        autocmd FileType typescript setlocal tabstop=2
-        autocmd FileType typescript setlocal shiftwidth=2
-        autocmd FileType typescript setlocal softtabstop=2
-        autocmd FileType javascript setlocal expandtab
-        autocmd FileType javascript setlocal tabstop=2
-        autocmd FileType javascript setlocal shiftwidth=2
-        autocmd FileType javascript setlocal softtabstop=2
-        autocmd BufEnter Makefile setlocal noexpandtab
-        autocmd BufEnter *.sh setlocal tabstop=2
-        autocmd BufEnter *.sh setlocal shiftwidth=2
-        autocmd BufEnter *.sh setlocal softtabstop=2
-        autocmd BufEnter *.html setlocal tabstop=2
-        autocmd BufEnter *.html setlocal shiftwidth=2
-        autocmd BufEnter *.html setlocal softtabstop=2
-        autocmd BufEnter *.md setlocal tabstop=2
-        autocmd BufEnter *.md setlocal shiftwidth=2
-        autocmd BufEnter *.md setlocal softtabstop=2
-        autocmd BufEnter *.yml setlocal tabstop=2
-        autocmd BufEnter *.yml setlocal shiftwidth=2
-        autocmd BufEnter *.yml setlocal softtabstop=2
-        autocmd BufEnter *.twig setlocal tabstop=2
-        autocmd BufEnter *.twig setlocal shiftwidth=2
-        autocmd BufEnter *.twig setlocal softtabstop=2
-    augroup END
+" configures filetype specific settings (mostly for tabs/spaces)
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php, *.py, *.js, *.txt, *.hs, *.java, *.md
+        \:call <SID>StripTrailingWhitespaces()
+    autocmd FileType php setlocal expandtab
+    autocmd FileType php setlocal list
+    autocmd FileType php setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType php setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd FileType typescript setlocal expandtab
+    autocmd FileType typescript setlocal tabstop=2
+    autocmd FileType typescript setlocal shiftwidth=2
+    autocmd FileType typescript setlocal softtabstop=2
+    autocmd FileType javascript setlocal expandtab
+    autocmd FileType javascript setlocal tabstop=4
+    autocmd FileType javascript setlocal shiftwidth=4
+    autocmd FileType javascript setlocal softtabstop=4
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufEnter *.html setlocal tabstop=2
+    autocmd BufEnter *.html setlocal shiftwidth=2
+    autocmd BufEnter *.html setlocal softtabstop=2
+    autocmd BufEnter *.md setlocal tabstop=2
+    autocmd BufEnter *.md setlocal shiftwidth=2
+    autocmd BufEnter *.md setlocal softtabstop=2
+    autocmd BufEnter *.yml setlocal tabstop=2
+    autocmd BufEnter *.yml setlocal shiftwidth=2
+    autocmd BufEnter *.yml setlocal softtabstop=2
+    autocmd BufEnter *.twig setlocal tabstop=2
+    autocmd BufEnter *.twig setlocal shiftwidth=2
+    autocmd BufEnter *.twig setlocal softtabstop=2
+augroup END
 
 " }}}
 " backups {{{
