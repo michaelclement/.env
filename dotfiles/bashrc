@@ -28,15 +28,46 @@ export EDITOR="$VISUAL"
 # SET PATH
 export PATH=${PATH}:${HOME}/bin
 
-# ALIASES
+# --------------------------------- #
+# ------------ ALIASES ------------ #
+# --------------------------------- #
+
 if [[ $PLATFORM == 'linux' ]]; then
     alias ls='ls --color=auto -x'
 elif [[ $PLATFORM == 'mac' ]]; then
     alias ls='ls -G -x'
 fi
 
+# Take me to my notes folder in the FileCloud dir
+alias notes='cd ~/FileCloud/My\ Files/Notes/; 
+            echo "You are now in the Notes dir"'
+
+alias projects='cd ~/FileCloud/My\ Files/Projects/; 
+            echo "You are now in the Projects dir"'
+
+# For angular projects that use pug, clean up a newly created component
+# and change html refs/files to pug equivalents
+alias pugit='pugit.sh'
+
+# These aliases ssh into the test and live servers for Discover ERDC
+alias discover-test='discover-erdc-test-server.sh'
+alias discover-live='discover-erdc-live-server.sh'
+
+# Docker aliases 
+alias build='docker-compose build'
+alias up='docker-compose up'
+alias down='docker-compose down -v'
+
+# Remove metadata_never_index file and rebuild the spotlight index
+# (only necessary when spotlight commits seppuku after a reboot)
+alias spindex='sudo rm /.metadata_never_index;
+               sudo mdutil -i on /;
+               sudo mdutil -E /;'
+
 # pyenv initialization settings
 # export WORKON_HOME=~/.ve
 # export PROJECT_HOME=~/workspace
 # eval "$(pyenv init -)"
 # pyenv virtualenvwrapper_lazy
+
+
